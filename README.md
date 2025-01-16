@@ -227,7 +227,7 @@ _This list continuously grows to reflect common queries made on Ed. You may find
     </details>
 
 
-6. **I can't figure out the disturbance distribution for the `MediumSystem`.**
+6. **I can't figure out the disturbance distribution for the `LargeSystem`.**
     <details>
     <summary>Expand for a <i>hint</i>.</summary>
 
