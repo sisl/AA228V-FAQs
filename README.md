@@ -40,7 +40,7 @@ _This list continuously grows to reflect common queries made on Ed. You may find
 
 2. **I can't figure out the disturbance distribution for the `SmallSystem`.**
     <details>
-    <summary>Expand for a _hint_.</summary>
+    <summary>Expand for a <i>hint</i>.</summary>
 
     <hr>
 
@@ -130,7 +130,7 @@ _This list continuously grows to reflect common queries made on Ed. You may find
 
 4. **I can't figure out the disturbance distribution for the `MediumSystem`.**
     <details>
-    <summary>Expand for a _hint_.</summary>
+    <summary>Expand for a <i>hint</i>.</summary>
 
     <hr>
 
@@ -229,7 +229,7 @@ _This list continuously grows to reflect common queries made on Ed. You may find
 
 6. **I can't figure out the disturbance distribution for the `MediumSystem`.**
     <details>
-    <summary>Expand for a _hint_.</summary>
+    <summary>Expand for a <i>hint</i>.</summary>
 
     <hr>
     
