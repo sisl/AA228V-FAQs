@@ -11,6 +11,10 @@ _This list continuously grows to reflect common queries made on Ed. You may find
 ## Project 1
 
 1. **What's the code for the `SmallSystem`?**
+    <details>
+    <summary>Expand for the code.</summary>
+
+    <hr>
 
     ```julia
     ## Agent
@@ -31,10 +35,12 @@ _This list continuously grows to reflect common queries made on Ed. You may find
 
     Distributions.pdf(sensor::IdealSensor, s, xₛ) = 1.0
     ```
+    <hr>
+    </details>
 
 2. **I can't figure out the disturbance distribution for the `SmallSystem`.**
     <details>
-    <summary>Expand for a hint.</summary>
+    <summary>Expand for a _hint_.</summary>
 
     <hr>
 
@@ -68,6 +74,10 @@ _This list continuously grows to reflect common queries made on Ed. You may find
     </details>
 
 3. **What's the code for the `MediumSystem`?**
+    <details>
+    <summary>Expand for the code.</summary>
+
+    <hr>
 
     ```julia
     ## Agent
@@ -115,10 +125,12 @@ _This list continuously grows to reflect common queries made on Ed. You may find
 
     Os(sensor::AdditiveNoiseSensor) = I
     ```
+    <hr>
+    </details>
 
 4. **I can't figure out the disturbance distribution for the `MediumSystem`.**
     <details>
-    <summary>Expand for a hint.</summary>
+    <summary>Expand for a _hint_.</summary>
 
     <hr>
 
@@ -145,6 +157,11 @@ _This list continuously grows to reflect common queries made on Ed. You may find
     </details>
 
 5. **What's the code for the `LargeSystem`?**
+    <details>
+    <summary>Expand for the code.</summary>
+
+    <hr>
+
     ```julia
     ## Agent
     struct InterpAgent <: Agent
@@ -206,10 +223,13 @@ _This list continuously grows to reflect common queries made on Ed. You may find
 
     Distributions.pdf(sensor::IdealSensor, s, xₛ) = 1.0
     ```
+    <hr>
+    </details>
+
 
 6. **I can't figure out the disturbance distribution for the `MediumSystem`.**
     <details>
-    <summary>Expand for a hint.</summary>
+    <summary>Expand for a _hint_.</summary>
 
     <hr>
     
