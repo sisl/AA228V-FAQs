@@ -33,31 +33,39 @@ _This list continuously grows to reflect common queries made on Ed. You may find
     ```
 
 2. **I can't figure out the disturbance distribution for the `SmallSystem`.**
-    - If you're trying fuzzing, the `disturbance_distribution` for the `SmallSystem` does not apply:
-        ```julia
-        D = DisturbanceDistribution((o)->Deterministic(),
-                                    (s,a)->Deterministic(),
-                                    (s)->Deterministic())
-        ```
-        
-        where
+    <details>
+    <summary>Expand for a hint.</summary>
 
-        ```julia
-        struct DisturbanceDistribution
-            Da # agent disturbance distribution
-            Ds # environment disturbance distribution
-            Do # sensor disturbance distribution
-        end
-        ```
-        
-        but the `initial_state_distribution` should be changed:
+    <hr>
 
-        ```julia
-        function StanfordAA228V.initial_state_distribution(p::YourFuzzingDistribution)
-            return Normal(SOME_MEAN, SOME_STD)
-        end
-        ```
-    - See _Example 4.3_ in the textbook for how this is applied to the pendulum.
+    If you're trying fuzzing, the `disturbance_distribution` for the `SmallSystem` does not apply:
+
+    ```julia
+    D = DisturbanceDistribution((o)->Deterministic(),
+                                (s,a)->Deterministic(),
+                                (s)->Deterministic())
+    ```
+
+    where
+
+    ```julia
+    struct DisturbanceDistribution
+        Da # agent disturbance distribution
+        Ds # environment disturbance distribution
+        Do # sensor disturbance distribution
+    end
+    ```
+
+    but the `initial_state_distribution` should be changed:
+
+    ```julia
+    function StanfordAA228V.initial_state_distribution(p::YourFuzzingDistribution)
+        return Normal(SOME_MEAN, SOME_STD)
+    end
+    ```
+    See _Example 4.3_ in the textbook for how this is applied to the pendulum.
+    <hr>
+    </details>
 
 3. **What's the code for the `MediumSystem`?**
 
@@ -109,25 +117,32 @@ _This list continuously grows to reflect common queries made on Ed. You may find
     ```
 
 4. **I can't figure out the disturbance distribution for the `MediumSystem`.**
-    - If you're trying fuzzing, the `disturbance_distribution` for the `MediumSystem` applies disturbances to the _sensor_:
+    <details>
+    <summary>Expand for a hint.</summary>
 
-        ```julia
-        D = DisturbanceDistribution((o)->Deterministic(),
-                                    (s,a)->Deterministic(),
-                                    (s)->MvNormal(SOME_MEAN_VECTOR, SOME_COVARIANCE))
-        ```
+    <hr>
 
-        where
+    If you're trying fuzzing, the `disturbance_distribution` for the `MediumSystem` applies disturbances to the _sensor_:
 
-        ```julia
-        struct DisturbanceDistribution
-            Da # agent disturbance distribution
-            Ds # environment disturbance distribution
-            Do # sensor disturbance distribution
-        end
-        ```
+    ```julia
+    D = DisturbanceDistribution((o)->Deterministic(),
+                                (s,a)->Deterministic(),
+                                (s)->MvNormal(SOME_MEAN_VECTOR, SOME_COVARIANCE))
+    ```
 
-    - See _Example 4.3_ in the textbook.
+    where
+
+    ```julia
+    struct DisturbanceDistribution
+        Da # agent disturbance distribution
+        Ds # environment disturbance distribution
+        Do # sensor disturbance distribution
+    end
+    ```
+
+    See _Example 4.3_ in the textbook.
+    <hr>
+    </details>
 
 5. **What's the code for the `LargeSystem`?**
     ```julia
@@ -193,7 +208,12 @@ _This list continuously grows to reflect common queries made on Ed. You may find
     ```
 
 6. **I can't figure out the disturbance distribution for the `MediumSystem`.**
-    - If you're trying fuzzing, the `disturbance_distribution` for the `LargeSystem` applies disturbances to the _environment_:
+    <details>
+    <summary>Expand for a hint.</summary>
+
+    <hr>
+    
+    If you're trying fuzzing, the `disturbance_distribution` for the `LargeSystem` applies disturbances to the _environment_:
 
     ```julia
     D = DisturbanceDistribution((o)->Deterministic(),
@@ -211,5 +231,6 @@ _This list continuously grows to reflect common queries made on Ed. You may find
     end
     ```
 
-    - See _Example 4.3_ in the textbook for how this is applied to the pendulum.
-
+    See _Example 4.3_ in the textbook for how this is applied to the pendulum.
+    <hr>
+    </details>
