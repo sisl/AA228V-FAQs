@@ -47,9 +47,12 @@ _This list continuously grows to reflect common queries made on Ed. You may find
     If you're trying fuzzing, the `disturbance_distribution` for the `SmallSystem` does not apply:
 
     ```julia
-    D = DisturbanceDistribution((o)->Deterministic(),
-                                (s,a)->Deterministic(),
-                                (s)->Deterministic())
+    function StanfordAA228V.disturbance_distribution(p::YourSmallFuzzingDistribution, t)
+        D = DisturbanceDistribution((o)->Deterministic(),
+                                    (s,a)->Deterministic(),
+                                    (s)->Deterministic())
+        return D
+    end
     ```
 
     where
@@ -137,9 +140,12 @@ _This list continuously grows to reflect common queries made on Ed. You may find
     If you're trying fuzzing, the `disturbance_distribution` for the `MediumSystem` applies disturbances to the _sensor_:
 
     ```julia
-    D = DisturbanceDistribution((o)->Deterministic(),
-                                (s,a)->Deterministic(),
-                                (s)->MvNormal(SOME_MEAN_VECTOR, SOME_COVARIANCE))
+    function StanfordAA228V.disturbance_distribution(p::YourMediumFuzzingDistribution, t)
+        D = DisturbanceDistribution((o)->Deterministic(),
+                                    (s,a)->Deterministic(),
+                                    (s)->MvNormal(SOME_MEAN_VECTOR, SOME_COVARIANCE))
+        return D
+    end
     ```
 
     where
@@ -236,9 +242,12 @@ _This list continuously grows to reflect common queries made on Ed. You may find
     If you're trying fuzzing, the `disturbance_distribution` for the `LargeSystem` applies disturbances to the _environment_:
 
     ```julia
-    D = DisturbanceDistribution((o)->Deterministic(),
-                                (s,a)->Normal(SOME_MEAN, SOME_STD),
-                                (s)->Deterministic())
+    function StanfordAA228V.disturbance_distribution(p::YourLargeFuzzingDistribution, t)
+        D = DisturbanceDistribution((o)->Deterministic(),
+                                    (s,a)->Normal(SOME_MEAN, SOME_STD),
+                                    (s)->Deterministic())
+        return D
+    end
     ```
 
     where
@@ -253,4 +262,22 @@ _This list continuously grows to reflect common queries made on Ed. You may find
 
     See _Example 4.3_ in the textbook for how this is applied to the pendulum.
     <hr>
+    </details>
+
+7. **I'm getting an error saying something like "No method `length` for `MyFuzzingDistribution` type" or "UndefKeywordError: keyword argument `d` not assigned."**
+    <details>
+    <summary>Expand for answer.</summary>
+
+    <hr>
+
+    You're likely forgetting to include the `<: TrajectoryDistribution` to the `struct` definition of your custom `MyFuzzingDistribution`
+
+    ```julia
+    struct MyFuzzingDistribution <: TrajectoryDistribution
+       # some parameters
+    end     
+    ```
+
+    <hr>
+
     </details>
