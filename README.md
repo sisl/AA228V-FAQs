@@ -281,3 +281,24 @@ _This list continuously grows to reflect common queries made on Ed. You may find
     <hr>
 
     </details>
+8. **What are the `rollout` function signatures?**
+    <details>
+    <summary>Expand for answer.</summary>
+
+    <hr>
+
+    The textbook and the `StanfordAA228V.jl` package define a few `rollout` functions.
+
+    You can see the `src/system.jl` file in the `StanfordAA228V.jl` repo, which defines these `rollout` functions with the following input signatures:
+
+    ```julia
+    rollout(sys::System; d=1)
+    rollout(sys::System, s; d)
+    rollout(sys::System, s, 𝐱; d=length(𝐱))
+    rollout(sys::System, s, p::TrajectoryDistribution; d=depth(p))
+    rollout(sys::System, p::TrajectoryDistribution; d=depth(p))
+    ```
+
+    <hr>
+
+    </details>
