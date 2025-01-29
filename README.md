@@ -72,7 +72,9 @@ _This list continuously grows to reflect common queries made on Ed. You may find
     end
     ```
 
-    but the `initial_state_distribution` should be changed:
+    **(you don't need to redefine the `DisturbanceDistribution` struct)**
+
+    But the `initial_state_distribution` should be changed:
 
     ```julia
     function StanfordAA228V.initial_state_distribution(p::YourSmallFuzzingDistribution)
@@ -93,7 +95,13 @@ _This list continuously grows to reflect common queries made on Ed. You may find
     ```julia
     rollout(sys, qτ; d)
     ```
-    
+
+    **Note**: You should evaluate the `logpdf` using the _nominal_ trajectory distribution:
+    ```julia
+    pτ = NominalTrajectoryDistribution(sys, d)
+    # use pτ when you call logpdf(pτ, τ)
+    ```
+
     See _Example 4.3_ in the textbook for how this is applied to the pendulum.
     <hr>
     </details>
@@ -186,6 +194,8 @@ _This list continuously grows to reflect common queries made on Ed. You may find
         Do # sensor disturbance distribution
     end
     ```
+   
+    **(you don't need to redefine the `DisturbanceDistribution` struct)**
 
     The `initial_state_distribution` could be the nominal (shown below) or you could change it:
     ```julia
@@ -207,6 +217,12 @@ _This list continuously grows to reflect common queries made on Ed. You may find
     And used in the rollout function:
     ```julia
     rollout(sys, qτ; d)
+    ```
+
+    **Note**: You should evaluate the `logpdf` using the _nominal_ trajectory distribution:
+    ```julia
+    pτ = NominalTrajectoryDistribution(sys, d)
+    # use pτ when you call logpdf(pτ, τ)
     ```
 
     See _Example 4.3_ in the textbook.
@@ -318,6 +334,9 @@ _This list continuously grows to reflect common queries made on Ed. You may find
     end
     ```
 
+    **(you don't need to redefine the `DisturbanceDistribution` struct)**
+
+
     The `initial_state_distribution` could be the nominal (shown below) or you could change it:
     ```julia
     function StanfordAA228V.initial_state_distribution(p::YourLargeFuzzingDistribution)
@@ -343,6 +362,12 @@ _This list continuously grows to reflect common queries made on Ed. You may find
     And used in the rollout function:
     ```julia
     rollout(sys, qτ; d)
+    ```
+
+    **Note**: You should evaluate the `logpdf` using the _nominal_ trajectory distribution:
+    ```julia
+    pτ = NominalTrajectoryDistribution(sys, d)
+    # use pτ when you call logpdf(pτ, τ)
     ```
 
     See _Example 4.3_ in the textbook for how this is applied to the pendulum.
